@@ -1,0 +1,89 @@
+body {
+  background-color: rgb(148, 166, 184);
+}
+
+.logout {
+  text-align: right;
+  margin-right: 10%;
+}
+
+#chat-app {
+  margin: 5% 0 10% 20%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  height: 500px;
+}
+
+.display-panel {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-name {
+  background-color: rgb(26, 42, 58);
+  height: 15px;
+}
+
+.users {
+  background-color: rgb(26, 42, 58);
+  list-style: none;
+  color: aliceblue;
+  width: 10%;
+  margin: 0;
+}
+.user {
+  margin: 10% 0;
+}
+
+.messages {
+  list-style: none;
+  padding: 0;
+  max-height: 100%;
+  overflow: auto;
+  height: 80%;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-info {
+  text-align: center;
+  min-width: 150px;
+  padding: 5px;
+}
+
+.message-text {
+  display: inline-block;
+  text-align: left;
+  border-radius: 8px;
+  padding: 0.3em;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: fit-content;
+  background-color: rgb(155, 206, 79);
+}
+
+.sender-info {
+}
+
+.message-info {
+  text-align: center;
+}
+
+.outgoing {
+  text-align: right;
+  width: auto;
+  margin-bottom: 3%;
+  margin-right: 3%;
+}
+
+.to-send {
+  width: 80%;
+  height: 40px;
+  border-style: ridge;
+  border-radius: 8px;
+}
