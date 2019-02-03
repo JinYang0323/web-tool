@@ -1,4 +1,3 @@
-const currentUser = "me";
 const chatWeb = {
   chatPage: function(chat) {
     return `
@@ -12,7 +11,7 @@ const chatWeb = {
           <div class="logout">
             <form action="/logout" method="POST">
               <button type="submit">Log out</button>
-              <input type="hidden" name="user" value=${currentUser}>
+              <input type="hidden" name="user" value=${chat.currentUser}>
             </form>
           </div>
           <div id="chat-app">
@@ -55,15 +54,16 @@ const chatWeb = {
           message => `
         <li>
           <div class="message">
-            <div class="meta-info">
-              <div class="message-info">
-                <span class="timestamp">${message.timestamp}</span>
-              </div>
+            <div class="message-info">
+              <span class="timestamp">${message.timestamp}</span>
+            </div>  
+          <div class="meta-info">              
               <div class="sender-info">
+                <img class="avatar" alt="" src="/image.jpg"/>  
                 <span class="username">${message.sender}</span>
-              </div>       
-            </div>
-            <p class="message-text">${message.text}</p>
+                <p class="message-text">${message.text}</p>  
+              </div>                  
+            </div>            
           </div>
         </li>
       `
@@ -79,11 +79,12 @@ const chatWeb = {
         <form action="/chat" method="POST">
           <input class="to-send" name="text" value="" placeholder="Enter message to send"/>
           <button type="submit">Send</button>
-          <input type="hidden" name="sender" value=${currentUser}>
+          <input type="hidden" name="sender" value=${chat.currentUser}>
         </form>
         <br />
-        <form class="refresh" action="/" method="POST">
+        <form class="refresh" action="/refresh" method="POST">
           <button type="submit">Refresh</button>
+          <input type="hidden" name="user" value=${chat.currentUser}>
         </form>
       </div>
     `;

@@ -1,17 +1,20 @@
 body {
-  background-color: rgb(148, 166, 184);
+  background-color: rgb(153, 172, 191);
 }
 
 .login-frame {
-  background-color: rgb(26, 42, 58);
+  background-color: rgb(48, 60, 72);
   margin-top: 10%;
   margin-left: 20%;
   color: white;
+  width: 100%;
 }
 
 .login-box {
   margin-left: 20%;
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .account-login {
@@ -22,6 +25,7 @@ body {
 .username {
   text-align: center;
   width: 90%;
+  height: 18px;
 }
 form {
   text-align: right;
@@ -30,6 +34,6 @@ form {
 }
 button {
   border-radius: 5px;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 15%;
 }

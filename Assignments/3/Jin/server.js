@@ -9,34 +9,39 @@ const loginWeb = require("./login-web");
 app.use(express.static("./public"));
 
 app.get("/", (req, res) => {
-  res.send(loginWeb.loginPage(chat));
-});
-
-app.get("/chat", (req, res) => {
-  res.send(chatWeb.chatPage(chat));
+  if (chat.currentUser) {
+    res.send(chatWeb.chatPage(chat));
+    chat.currentUser = null;
+  } else {
+    res.send(loginWeb.loginPage(chat));
+  }
 });
 
 app.post("/login", express.urlencoded({ extended: false }), (req, res) => {
   const currentUser = req.body.username;
   chat.addUser(currentUser);
-  res.redirect("/chat");
+  chat.currentUser = currentUser;
+  res.redirect("/");
 });
 
 app.post("/logout", express.urlencoded({ extended: false }), (req, res) => {
   const current = req.body.user;
   chat.deleteUser(current);
+  chat.currentUser = null;
   res.redirect("/");
 });
 
-app.post("/", express.urlencoded({ extended: false }), (req, res) => {
-  res.redirect("/chat");
+app.post("/refresh", express.urlencoded({ extended: false }), (req, res) => {
+  chat.currentUser = req.body.user;
+  res.redirect("/");
 });
 
 app.post("/chat", express.urlencoded({ extended: false }), (req, res) => {
   const sender = req.body.sender;
+  chat.currentUser = sender;
   const text = req.body.text;
   chat.addMessage({ sender, text, timestamp: new Date() });
-  res.redirect("/chat");
+  res.redirect("/");
 });
 
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));

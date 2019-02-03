@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(148, 166, 184);
+  background-color: rgb(153, 172, 191);
 }
 
 .logout {
@@ -8,11 +8,12 @@ body {
 }
 
 #chat-app {
-  margin: 5% 0 10% 20%;
+  margin: 0 5% 0 20%;
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  height: 500px;
+  min-width: 3000px;
+  height: 580px;
 }
 
 .display-panel {
@@ -22,15 +23,15 @@ body {
 }
 
 .login-name {
-  background-color: rgb(26, 42, 58);
-  height: 15px;
+  background-color: rgb(48, 60, 72);
+  height: 2px;
 }
 
 .users {
-  background-color: rgb(26, 42, 58);
+  background-color: rgb(48, 60, 72);
   list-style: none;
   color: aliceblue;
-  width: 10%;
+  width: 5%;
   margin: 0;
 }
 .user {
@@ -42,6 +43,7 @@ body {
   padding: 0;
   max-height: 100%;
   overflow: auto;
+  min-width: 600px;
   height: 80%;
 }
 
@@ -50,10 +52,12 @@ body {
   flex-direction: column;
 }
 
-.meta-info {
-  text-align: center;
+.sender-info {
   min-width: 150px;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
 }
 
 .message-text {
@@ -64,10 +68,7 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   width: fit-content;
-  background-color: rgb(155, 206, 79);
-}
-
-.sender-info {
+  background-color: rgb(171, 206, 119);
 }
 
 .message-info {
@@ -82,8 +83,13 @@ body {
 }
 
 .to-send {
-  width: 80%;
+  width: 85%;
   height: 40px;
+  margin-right: 15px;
   border-style: ridge;
   border-radius: 8px;
+}
+
+.avatar {
+  width: 40px;
 }
