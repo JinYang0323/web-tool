@@ -1,0 +1,46 @@
+body {
+  background: #fff0f0;
+}
+
+.top-panel {
+  display: flex;
+  flex-direction: row;
+  margin: 5em 10em;
+  justify-content: space-between;
+}
+
+.guess-count {
+}
+
+.word-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.valid-word {
+  margin: 1em;
+  padding: 0.5em 1em;
+  background: pink;
+  border-radius: 1em;
+}
+
+.restart {
+  text-align: center;
+}
+
+.guess-count {
+  border: black 1px;
+}
+.guess-panel {
+  text-align: center;
+  font-size: 2em;
+}
+.history {
+  display: flex;
+  flex-direction: row;
+  margin: 5em 10em;
+}
+
+.message-panel {
+  text-align: center;
+}
