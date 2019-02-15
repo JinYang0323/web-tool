@@ -6,7 +6,7 @@
 * I cannot assume knowledge you don't demonstrate, so be clear and explicit.
 
 ## Q: What is the difference between a dynamic asset and a static asset?
-dynamic asset
+A program may have multiple dynamic assets with the same name, but a static asset must 
 
 ## Q: What is the difference between a relative and absolute file path in a URL?  What is the "webserver root" and how does this relate to it?
 
