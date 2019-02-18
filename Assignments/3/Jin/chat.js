@@ -1,18 +1,12 @@
-const users = [];
+const users = {};
 const messages = [];
 
-let currentUser = "";
-
-function addUser(userName) {
-  if (users.indexOf(userName) == -1) {
-    users.push(userName);
-  }
+function addUser({ username }) {
+  users[username] = username;
 }
 
-function deleteUser(userName) {
-  if (users.indexOf(userName) != -1) {
-    users.splice(users.indexOf(userName), 1);
-  }
+function deleteUser({ username }) {
+  delete users[username];
 }
 
 function addMessage({ sender, timestamp, text }) {

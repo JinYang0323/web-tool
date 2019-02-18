@@ -1,5 +1,5 @@
 const chatWeb = {
-  chatPage: function(chat) {
+  chatPage: function(chat, username) {
     return `
       <!DOCTYPE html>
       <html>
@@ -10,9 +10,9 @@ const chatWeb = {
         <body>
           <div class="logout">
             <form action="/logout" method="POST">
+              <input type="hidden" name="username" value="${username}">
               <button type="submit">Log out</button>
-              <input type="hidden" name="user" value=${chat.currentUser}>
-            </form>
+              </form>
           </div>
           <div id="chat-app">
           ${chatWeb.getUserList(chat)}
@@ -20,7 +20,7 @@ const chatWeb = {
               <div class="login-name"></div>
               ${chatWeb.getMessageList(chat)}
               <hr width="95%" />
-              ${chatWeb.getOutgoing(chat)}
+              ${chatWeb.getOutgoing(username)}
             </div>            
           </div>
         </body>
@@ -73,18 +73,17 @@ const chatWeb = {
     );
   },
 
-  getOutgoing: function(chat) {
+  getOutgoing: function(username) {
     return `
       <div class="outgoing">
-        <form action="/chat" method="POST">
-          <input class="to-send" name="text" value="" placeholder="Enter message to send"/>
-          <button type="submit">Send</button>
-          <input type="hidden" name="sender" value=${chat.currentUser}>
+        <form class="send" action="/chat" method="POST">
+          <input type="hidden" name="username" value="${username}">
+          <input class="to-send" name="text" value="" placeholder="Enter message to send" />
+          <button type="submit">Send</button>    
         </form>
-        <br />
-        <form class="refresh" action="/refresh" method="POST">
+        <form class="refresh" action="/" method="GET">
+          <input type="hidden" name="username" value="${username}">
           <button type="submit">Refresh</button>
-          <input type="hidden" name="user" value=${chat.currentUser}>
         </form>
       </div>
     `;

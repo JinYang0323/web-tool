@@ -4,6 +4,7 @@ const messages = [
   { sender: "s", timestamp: "2019 whatever", text: "lalala" },
   { sender: "d", timestamp: "2018 whatever", text: "heiheihei" },
   { sender: "s", timestamp: "2019 whatever", text: "gagaga" },
+  { sender: "s", timestamp: "2019 whatever", text: "gagaga" },
   { sender: "d", timestamp: "2018 whatever", text: "lueluelue" }
 ];
 

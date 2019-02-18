@@ -21,7 +21,7 @@ const chatWeb = {
     return this.pageWrap(`
       <div class="login">
         <form action="/login" method="POST">
-          <input name="username" placeholder="Enter Username"/>
+          <input name="username" class="username" placeholder="Enter Username"/>
           <button type="submit">Login</button>
         </form>
       </div>

@@ -1,41 +1,69 @@
 "use strict";
-(function IIFE() {
-  const sendButton = document.querySelector(".send button");
-  const toSend = document.querySelector(".to-send");
-  if (toSend && sendButton) {
-    sendButton.disabled = !toSend.value;
-    toSend.addEventListener("input", e => {
-      if (e.target.value) {
-        sendButton.disabled = false;
-      } else {
-        sendButton.disabled = true;
-        sendButton.setAttribute("style", "color:grey");
-      }
-    });
-  }
-})();
 
 const selectedUsers = {};
 
 (function IIFE() {
+  const loginButton = document.querySelector(".login button");
+  const username = document.querySelector(".login .username");
+  setDisability(loginButton, username);
+  const sendButton = document.querySelector(".send button");
+  const toSend = document.querySelector(".to-send");
+  setDisability(sendButton, toSend);
+
+  initializeSelectedUsers();
   const userText = document.querySelectorAll(".user .username");
   const userArray = Array.from(userText);
   for (let user of userArray) {
     user.addEventListener("click", e => {
-      const username = user.innerHTML;
-      if (selectedUsers[username] === undefined) {
-        selectedUsers[username] = username;
-        user.setAttribute("style", "color:red;");
-      } else {
-        delete selectedUsers[username];
-        user.setAttribute("style", "color:black;");
-      }
+      changeColor(user);
       changeButtonVisibility();
       filterMessage();
     });
   }
+  const refreshButton = document.querySelector(".refresh button");
+  sendStateWhenRefresh(refreshButton);
+  sendStateWhenRefresh(sendButton);
 })();
 
+function initializeSelectedUsers() {
+  console.log(window.name);
+  Object.keys(selectedUsers).forEach(function(key) {
+    delete selectedUsers[key];
+  });
+  for (let username of window.name.split("+")) {
+    if (username) {
+      selectedUsers[username] = username;
+      console.log(username);
+    }
+  }
+  changeButtonVisibility();
+  filterMessage();
+}
+
+function setDisability(button, field) {
+  if (field && button) {
+    button.disabled = !field.value;
+    field.addEventListener("input", e => {
+      if (e.target.value) {
+        button.disabled = false;
+      } else {
+        button.disabled = true;
+        button.setAttribute("style", "color:grey");
+      }
+    });
+  }
+}
+
+function changeColor(user) {
+  const username = user.innerHTML;
+  if (selectedUsers[username] === undefined) {
+    selectedUsers[username] = username;
+    user.setAttribute("style", "color:red;");
+  } else {
+    delete selectedUsers[username];
+    user.setAttribute("style", "color:black;");
+  }
+}
 function changeButtonVisibility() {
   const unselectedAllButton = document.querySelector(".unselectAll button");
   if (unselectedAllButton && Object.keys(selectedUsers).length === 0) {
@@ -44,7 +72,9 @@ function changeButtonVisibility() {
     unselectedAllButton.setAttribute("style", "visibility:visible");
   }
   unselectedAllButton.addEventListener("click", e => {
-    selectedUsers = {};
+    Object.keys(selectedUsers).forEach(function(key) {
+      delete selectedUsers[key];
+    });
   });
 }
 
@@ -82,4 +112,16 @@ function deleteAllIndicator() {
   for (let indicator of indicatorNode) {
     indicator.setAttribute("style", "display:none");
   }
+}
+
+function sendStateWhenRefresh(button) {
+  button.addEventListener("click", e => {
+    let selectedUsersString = "";
+    for (let username of Object.keys(selectedUsers)) {
+      if (username) {
+        selectedUsersString = selectedUsersString + "+" + username;
+      }
+    }
+    window.name = selectedUsersString;
+  });
 }
