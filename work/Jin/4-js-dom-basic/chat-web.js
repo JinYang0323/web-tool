@@ -19,12 +19,16 @@ const chatWeb = {
 
   loginPage: function() {
     return this.pageWrap(`
-      <div class="login">
-        <form action="/login" method="POST">
-          <input name="username" class="username" placeholder="Enter Username"/>
-          <button type="submit">Login</button>
-        </form>
-      </div>
+    <div class="login-frame">       
+    <p class="account-login">Account Login</p>            
+    <div class="login">
+      <p text-align="left" style="height: 5px;">Username</p>
+      <form action="/login" method="POST">
+        <input name="username" class="username" placeholder="Enter Username"/>
+        <button type="submit">Log in</button>
+      </form>
+    </div>      
+</div>
     `);
   },
 
@@ -63,7 +67,7 @@ const chatWeb = {
       <ul id="users" class="users">
         ${Object.values(chat.users)
           .map(this.formatUser)
-          .join("")}
+          .join('')}
         <form class="unselectAll" action="/" method="GET">
           <input type="hidden" name="username" value="${username}"/>  
           <button type="submit">Unselect All</button>
@@ -92,7 +96,7 @@ const chatWeb = {
   getMessageList: function(chat) {
     return `
       <ol id="messages" class="messages">
-      ${chat.messages.map(this.formatMessage).join("")}
+      ${chat.messages.map(this.formatMessage).join('')}
       </ol>
     `;
   },

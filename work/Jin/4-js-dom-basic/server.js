@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 4000;
+const PORT = 3000;
 
 const chat = require('./chat');
 const chatWeb = require('./chat-web');

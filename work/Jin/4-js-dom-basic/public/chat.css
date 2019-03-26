@@ -1,5 +1,41 @@
+.login-frame {
+  background-color: rgb(48, 60, 72);
+  margin-top: 10%;
+  margin-left: 20%;
+  color: white;
+  width: 100%;
+}
+
+.login-frame .login {
+  margin-left: 20%;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-login {
+  text-align: left;
+  font-size: 30px;
+  margin: 1em;
+}
+.login-frame .username {
+  text-align: center;
+  width: 90%;
+  height: 18px;
+}
+.login-frame form {
+  text-align: right;
+  margin-right: 40%;
+  border-radius: 5px;
+}
+.login-frame button {
+  border-radius: 5px;
+  margin-top: 2%;
+  margin-bottom: 15%;
+}
+
 #chat-app {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 5px;
   display: flex;
   flex-direction: column;
